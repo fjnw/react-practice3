@@ -11,18 +11,9 @@ class App extends Component {
   }
 
   inputUpdateHandler = (event) => {
-    // const val = [...event.target.value]
     let val = event.target.value
     let len = val.length
-
     this.setState({text:val, textLength:len})
-
-    // this.setState({text: val}, function () {
-    //   this.setState({textLength: this.state.text.length}, function() {
-    //     console.log(this.state.text)
-    //     console.log(this.state.textLength)
-    //   })
-    // })
   }
 
   deleteComponent = (index) => {
@@ -33,7 +24,6 @@ class App extends Component {
 
 
   render() {
-
     let characters = null;
     let stringArray = this.state.text.split('');
 
