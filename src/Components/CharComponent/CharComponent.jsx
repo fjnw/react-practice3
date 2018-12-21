@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CharComponent = () => {
+const CharComponent = (props) => {
 
   return (
-    <div>
-
+    <div onClick={props.click}>
+      {props.value}
     </div>
   )
 };
