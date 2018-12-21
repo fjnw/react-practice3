@@ -6,7 +6,8 @@ import CharComponent from "./Components/CharComponent/CharComponent";
 class App extends Component {
 
   state = {
-    text: []
+    text: [],
+    textLength: null
   }
 
   inputUpdateHandler = (event) => {
@@ -14,8 +15,11 @@ class App extends Component {
     const val = event.target.value.split("")
 
     this.setState({text: val}, function () {
-      console.log(this.state.text)
+      this.setState({textLength: this.state.text.length}, function() {
+        console.log(this.state.text + this.state.textLength)
+      })
     })
+
   }
 
   render() {
@@ -25,11 +29,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input 
-          type="text" 
-          onChange={(event) => this.inputUpdateHandler(event)} />
+        <input type="text" onChange={(event) => this.inputUpdateHandler(event)} />
 
-        
+        <ValidationComponent  length={this.state.textLength}/>
         
       </div>
     );
