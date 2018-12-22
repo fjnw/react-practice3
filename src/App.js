@@ -17,28 +17,36 @@ class App extends Component {
   }
 
   deleteComponent = (index) => {
-    let str = this.state.text.split('');
-    str.splice(index,1);
-    this.setState({text:str.join('')})
+    const splitStr = this.state.text.split('');
+    splitStr.splice(index,1);
+    const joinedStr = splitStr.join('');
+    this.setState({text: joinedStr});
   }
 
 
   render() {
-    let characters = null;
-    let stringArray = this.state.text.split('');
+    // let characters = null;
+    // let stringArray = this.state.text.split('');
 
-    if (this.state.textLength) {
-      characters = (
-        <div>
-          {stringArray.map((letter, index) => {
-            return <CharComponent 
-              click={this.deleteComponent.bind(this,index)}
-              value={letter}
-              key={index} />
-          })}
-        </div>
-      );
-    }
+    // if (this.state.textLength) {
+    //   characters = (
+    //     <div>
+    //       {stringArray.map((letter, index) => {
+    //         return <CharComponent 
+    //           click={this.deleteComponent.bind(this,index)}
+    //           value={letter}
+    //           key={index} />
+    //       })}
+    //     </div>
+    //   );
+    // }
+
+    const characters = this.state.text.split('').map((ch, index) => {
+      return <CharComponent 
+      value={ch} 
+      key={index}  
+      click={() => this.deleteComponent(index)} />
+    })
 
     return (
       <div className="App">
